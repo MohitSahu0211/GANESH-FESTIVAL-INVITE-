@@ -3,124 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ganpati Invitation</title>
+    <title>गणपति आमंत्रण</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&display=swap');
+        
         body {
             margin: 0;
-            font-family: sans-serif;
-            background-color: #5c0000;
+            font-family: 'Mukta', sans-serif;
+            background-color: #1a0000;
             color: #ffdf91;
             text-align: center;
+            overflow-x: hidden;
         }
+
         #intro-screen {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ffe8b3;
+            background: linear-gradient(135deg, #3a0001, #1a0000);
             position: fixed;
             width: 100%;
-            z-index: 10;
-            transition: opacity 1s ease;
+            z-index: 100;
+            transition: opacity 1s ease, transform 1s ease;
         }
-        .open-btn {
-            background-color: #d4af37;
+        
+        .seal-btn {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #d4af37, #997a00);
             color: #5c0000;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 30px;
-            font-size: 20px;
+            border: 2px dashed #5c0000;
+            border-radius: 50%;
+            font-size: 22px;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
+            animation: pulse 2s infinite;
         }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         #main-content {
             display: none;
-            padding: 40px 20px;
+            padding: 20px;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
         }
-        h1 { font-size: 40px; margin-bottom: 5px; }
-        .timeline { margin: 40px 0; border-left: 2px solid #d4af37; padding-left: 20px; text-align: left; }
-        .event { margin-bottom: 20px; }
-        .event h3 { margin: 0; color: #fff; }
+
+        .arch-frame {
+            border-radius: 150px 150px 10px 10px;
+            border: 4px solid #d4af37;
+            padding: 10px;
+            margin: 20px auto;
+            max-width: 300px;
+            background-color: #3a0001;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .arch-frame img {
+            width: 100%;
+            border-radius: 140px 140px 5px 5px;
+            display: block;
+        }
+
+        h1 { font-size: 45px; margin: 10px 0; color: #d4af37; text-shadow: 2px 2px 4px #000; }
+        .shree { font-size: 20px; letter-spacing: 2px; }
+
+        .timeline-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        .event-box {
+            background: linear-gradient(145deg, #4a0000, #2a0000);
+            border: 1px solid #d4af37;
+            border-radius: 15px;
+            padding: 15px;
+            width: 40%;
+            min-width: 140px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .event-box h3 { margin: 0 0 5px 0; color: #fff; font-size: 18px; }
+        .event-box p { margin: 0; font-size: 14px; color: #ffdf91; }
+
         .map-btn {
             display: inline-block;
-            background-color: #fff;
+            background: linear-gradient(to right, #d4af37, #f3e5ab);
             color: #5c0000;
-            padding: 15px 30px;
+            padding: 15px 40px;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-weight: bold;
-            margin-top: 20px;
+            font-size: 18px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
+
         .contact-info {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #d4af37;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
         }
-        .contact-info a {
-            color: #ffdf91;
-            text-decoration: none;
-            font-weight: bold;
+        .contact-info a { color: #d4af37; text-decoration: none; font-weight: bold; font-size: 20px;}
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-
     <div id="intro-screen">
-        <button class="open-btn" onclick="openInvite()">आमंत्रण खोलें (Open)</button>
+        <div class="seal-btn" onclick="openInvite()">खोलें<br>(Tap)</div>
     </div>
 
     <div id="main-content">
-        <p>॥ श्री गणेशाय नमः ॥</p>
-        <h1>बप्पा का आगमन</h1>
-        <p>हमारे घर गणपति बाप्पा पधार रहे हैं...</p>
+        
+        <div class="reveal">
+            <p class="shree">॥ श्री गणेशाय नमः ॥</p>
+            <h1>बप्पा का आगमन</h1>
+            <p>सस्नेह निमंत्रण! हमारे घर गणपति बाप्पा पधार रहे हैं...</p>
+        </div>
 
-        <div class="timeline">
-            <div class="event">
-                <h3>आगमन (Aagaman)</h3>
-                <p>13 सितंबर, रात 8:00 बजे</p>
+        <!-- The image source is now set to your uploaded file -->
+        <div class="arch-frame reveal">
+            <img src="ganesha.jpg" alt="Lord Ganesha">
+        </div>
+
+        <h2 class="reveal" style="margin-top: 40px;">उत्सव का मंगल प्रवास</h2>
+        
+        <div class="timeline-container">
+            <div class="event-box reveal">
+                <h3>आगमन</h3>
+                <p>13 सितंबर<br>रात 8:00 बजे</p>
             </div>
-            <div class="event">
-                <h3>स्थापना (Sthapana)</h3>
+            <div class="event-box reveal">
+                <h3>स्थापना</h3>
                 <p>14 सितंबर</p>
             </div>
-            <div class="event">
-                <h3>महाप्रसाद (Mahaprasad)</h3>
-                <p>17 सितंबर, शाम 6:00 बजे से रात 11:00 बजे तक</p>
+            <div class="event-box reveal">
+                <h3>महाप्रसाद</h3>
+                <p>14 सितंबर<br>शाम 6:00 से रात 11:00</p>
             </div>
-            <div class="event">
-                <h3>पूजा (Puja)</h3>
-                <p>17 सितंबर, सुबह 8:00 बजे</p>
+            <div class="event-box reveal">
+                <h3>पूजा</h3>
+                <p>17 सितंबर<br>सुबह 8:00 बजे</p>
             </div>
-            <div class="event">
-                <h3>विसर्जन (Visarjan)</h3>
-                <p>18 सितंबर, शाम 7:00 बजे</p>
+            <div class="event-box reveal">
+                <h3>विसर्जन</h3>
+                <p>17 सितंबर<br>शाम 7:00 बजे</p>
             </div>
         </div>
 
-        <h2>कार्यक्रम स्थल</h2>
-        <p>Address : Kokan Nagar Opposite Swami Vivekanand Degree College</p> <!-- आप चाहें तो यहाँ अपना पूरा पता लिख सकते हैं -->
-        <a href="https://maps.app.goo.gl/EvUsWV2cxHFgRgFC8" class="map-btn">📍 Open Maps</a>
+        <div class="reveal">
+            <h2>कार्यक्रम स्थल</h2>
+            <p>मुंबई</p>
+            <a href="https://maps.app.goo.gl/EvUsWV2cxHFgRgFC8" class="map-btn">📍 Open Maps</a>
+        </div>
 
-        <div class="contact-info">
+        <div class="contact-info reveal">
             <h2>संपर्क (Contact)</h2>
-            <p> VISHNU SAHU : <a href="tel:9321801477">9321801477</a></p>
-            <p> MOHIT SAHU : <a href="tel:8369612939">8369612939</a></p>
+            <p>विष्णु साहू: <br><a href="tel:9321801477">📞 9321801477</a></p>
+            <p>मोहित साहू: <br><a href="tel:8369612939">📞 8369612939</a></p>
         </div>
+
+        <br><br><br>
     </div>
 
     <script>
         function openInvite() {
-            document.getElementById("bgMusic").play();
-            document.getElementById("intro-screen").style.opacity = '0';
+            let intro = document.getElementById("intro-screen");
+            intro.style.transform = 'scale(1.5)';
+            intro.style.opacity = '0';
+            
             setTimeout(() => {
-                document.getElementById("intro-screen").style.display = 'none';
+                intro.style.display = 'none';
                 document.getElementById("main-content").style.display = 'block';
-            }, 1000);
+                reveal(); 
+            }, 800);
         }
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 50;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
     </script>
 </body>
 </html>
