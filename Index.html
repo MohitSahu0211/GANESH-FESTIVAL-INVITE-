@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganpati Invitation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #5c0000;
+            color: #ffdf91;
+            text-align: center;
+        }
+        #intro-screen {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffe8b3;
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            transition: opacity 1s ease;
+        }
+        .open-btn {
+            background-color: #d4af37;
+            color: #5c0000;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        #main-content {
+            display: none;
+            padding: 40px 20px;
+        }
+        h1 { font-size: 40px; margin-bottom: 5px; }
+        .timeline { margin: 40px 0; border-left: 2px solid #d4af37; padding-left: 20px; text-align: left; }
+        .event { margin-bottom: 20px; }
+        .event h3 { margin: 0; color: #fff; }
+        .map-btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #5c0000;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .contact-info {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d4af37;
+        }
+        .contact-info a {
+            color: #ffdf91;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="intro-screen">
+        <button class="open-btn" onclick="openInvite()">आमंत्रण खोलें (Open)</button>
+    </div>
+
+    <div id="main-content">
+        <p>॥ श्री गणेशाय नमः ॥</p>
+        <h1>बप्पा का आगमन</h1>
+        <p>हमारे घर गणपति बाप्पा पधार रहे हैं...</p>
+
+        <div class="timeline">
+            <div class="event">
+                <h3>आगमन (Aagaman)</h3>
+                <p>13 सितंबर, रात 8:00 बजे</p>
+            </div>
+            <div class="event">
+                <h3>स्थापना (Sthapana)</h3>
+                <p>14 सितंबर</p>
+            </div>
+            <div class="event">
+                <h3>महाप्रसाद (Mahaprasad)</h3>
+                <p>17 सितंबर, शाम 6:00 बजे से रात 11:00 बजे तक</p>
+            </div>
+            <div class="event">
+                <h3>पूजा (Puja)</h3>
+                <p>17 सितंबर, सुबह 8:00 बजे</p>
+            </div>
+            <div class="event">
+                <h3>विसर्जन (Visarjan)</h3>
+                <p>18 सितंबर, शाम 7:00 बजे</p>
+            </div>
+        </div>
+
+        <h2>कार्यक्रम स्थल</h2>
+        <p>Address : Kokan Nagar Opposite Swami Vivekanand Degree College</p> <!-- आप चाहें तो यहाँ अपना पूरा पता लिख सकते हैं -->
+        <a href="https://maps.app.goo.gl/EvUsWV2cxHFgRgFC8" class="map-btn">📍 Open Maps</a>
+
+        <div class="contact-info">
+            <h2>संपर्क (Contact)</h2>
+            <p> VISHNU SAHU : <a href="tel:9321801477">9321801477</a></p>
+            <p> MOHIT SAHU : <a href="tel:8369612939">8369612939</a></p>
+        </div>
+    </div>
+
+    <script>
+        function openInvite() {
+            document.getElementById("bgMusic").play();
+            document.getElementById("intro-screen").style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById("intro-screen").style.display = 'none';
+                document.getElementById("main-content").style.display = 'block';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
